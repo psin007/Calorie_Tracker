@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MyCalorieTracker</string>
+    <string name="email">Email Id</string>
+    <string name="password">Password</string>
+    <string name="login">Sign in</string>
+    <string name="register"><u>Register now</u></string>
+    <string name="firstName">First Name</string>
+    <string name="surName">First Name</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="postcode">Postcode</string>
+    <string name="signuptitle">Registertaion form</string>
+    <string name="dob">Date of birth</string>
+    <string name="submit">Submit</string>
+    <string name="gender">Gender</string>
+    <string name="username">Username</string>
+    <string name="address">Address</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="stepsPerMile">Number of Steps Per Mile</string>
+    <string name="levelOfActivity">level Of Activity</string>
+    <string name="title_activity_navigation_drawer">navigationDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+</resources>

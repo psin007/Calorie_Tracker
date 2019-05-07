@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0E68C"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".RegisterActivity"
+        >
+        <!-- Registration form Label -->
+        <TextView
+            android:id="@+id/label_Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="Registeration form"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:textColor="#000000"
+
+            />
+        <!-- first name Label -->
+
+        <TextView
+            android:id="@+id/label_firstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_Register"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="First Name"
+            android:textColor="#000000"
+            />
+        <!-- first name input -->
+
+        <EditText
+            android:id="@+id/firstName"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_firstName"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="John"
+            />
+        <!-- Surname Label -->
+        <TextView
+            android:id="@+id/label_surName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/firstName"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="Surname"
+            android:textColor="#000000"
+            />
+        <!-- surname input -->
+        <EditText
+            android:id="@+id/surName"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_surName"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="Smith"
+            />
+        <!-- Email Label -->
+        <TextView
+            android:id="@+id/label_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/surName"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/email"
+            android:textColor="#000000"
+            />
+        <!-- Email input-->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_email"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="johnsmith@gmail.com"
+            />
+        <!-- userName Label -->
+        <TextView
+            android:id="@+id/label_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/username"
+            android:textColor="#000000"
+            />
+        <!-- userName input-->
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_username"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="johnsmith@123"
+            />
+        <!-- Password Label -->
+        <TextView
+            android:id="@+id/label_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/password"
+            android:textColor="#000000"
+            />
+        <!-- password input-->
+        <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_password"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            />
+        <!-- DOB label-->
+        <TextView
+            android:id="@+id/label_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/dob"
+            android:textColor="#000000"
+            />
+        <!-- DOB input-->
+        <EditText
+            android:id="@+id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_dob"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:onClick="addDob"
+            android:hint="dd/mm/yyyy"
+            />
+        <!-- height Label -->
+        <TextView
+            android:id="@+id/label_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dob"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/height"
+            android:textColor="#000000"
+            />
+        <!-- Height input-->
+        <EditText
+            android:id="@+id/height"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_height"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="in CM"
+            />
+        <!-- weight Label -->
+        <TextView
+            android:id="@+id/label_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/height"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/weight"
+            android:textColor="#000000"
+
+            />
+        <!-- weight input-->
+        <EditText
+            android:id="@+id/weight"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_weight"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="in Kg"
+            />
+        <!-- Gender Label -->
+        <TextView
+            android:id="@+id/label_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weight"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/gender"
+            android:textColor="#000000"
+
+            />
+        <!-- radio input M/F-->
+        <RadioGroup
+            android:id="@+id/radioSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_gender"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:orientation="horizontal">
+            >
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_male"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_female" />
+
+        </RadioGroup>
+        <!-- Address Label -->
+        <TextView
+            android:id="@+id/label_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioSex"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/address"
+            android:textColor="#000000"
+            />
+        <!-- Address street input-->
+        <EditText
+            android:id="@+id/streetaddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_address"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="Address line 1"
+            />
+        <!-- Address suburb input-->
+        <EditText
+            android:id="@+id/suburbaddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/streetaddress"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:hint="Address line 2"
+            />
+        <!-- Postcode label-->
+        <TextView
+            android:id="@+id/label_postcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/suburbaddress"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/postcode"
+            android:textColor="#000000"
+
+            />
+        <!-- Postcode selection-->
+        <Spinner
+            android:id="@+id/postcode_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_postcode"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            />
+        <!-- Level of Activity-->
+        <TextView
+            android:id="@+id/label_levelOfActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/postcode_spinner"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/levelOfActivity"
+            android:textColor="#000000"
+            />
+        <!-- levelofActivity selection-->
+        <Spinner
+            android:id="@+id/levelOfActivity_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_levelOfActivity"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            />
+        <!-- Steps per mile-->
+        <TextView
+            android:id="@+id/label_stepsPerMile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/levelOfActivity_spinner"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="@string/stepsPerMile"
+            android:textColor="#000000"
+
+            />
+        <!-- Steps per mile-->
+
+        <EditText
+            android:id="@+id/stepsPerMile"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/label_stepsPerMile"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            />
+        <!-- Submit button-->
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:onClick="submit"
+            android:text="@string/submit"
+            android:layout_below="@id/stepsPerMile"
+            android:layout_marginTop="17dp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+</ScrollView>
