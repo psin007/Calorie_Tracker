@@ -126,6 +126,7 @@ public class Register extends AppCompatActivity {
         if (weight.trim().length()==0){
             edweight.setError("weight can not be empty!");
             flag = 1;
+            //
         }
 
 
