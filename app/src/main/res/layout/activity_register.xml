@@ -177,6 +177,8 @@
             android:textSize="18sp"
             android:onClick="addDob"
             android:hint="dd/mm/yyyy"
+            android:focusableInTouchMode="false"
+
             />
         <!-- height Label -->
         <TextView
@@ -384,11 +386,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:onClick="submit"
             android:text="@string/submit"
             android:layout_below="@id/stepsPerMile"
             android:layout_marginTop="17dp"
             android:layout_centerHorizontal="true"
+            android:onClick="registerationValues"
+
             />
     </RelativeLayout>
 </ScrollView>
