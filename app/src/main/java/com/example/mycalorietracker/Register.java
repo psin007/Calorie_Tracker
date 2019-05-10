@@ -106,15 +106,15 @@ public class Register extends AppCompatActivity {
             edpassword.setError("password can not be empty!");
             flag = 1;
         }
-        EditText dateOfBirth = (EditText)findViewById(R.id.password);
-        dateOfBirth.setText(date);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        try {
-            java.util.Date utilDate = sdf.parse(date);
-            birthDate = new java.sql.Date(utilDate.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        EditText dateOfBirth = (EditText)findViewById(R.id.password);
+//        dateOfBirth.setText(date);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//        try {
+//            java.util.Date utilDate = sdf.parse(date);
+//            birthDate = new java.sql.Date(utilDate.getTime());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         EditText edheight = (EditText)findViewById(R.id.height);
         final String height = edheight.getText().toString();
         if (height.trim().length()==0){

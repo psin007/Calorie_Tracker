@@ -29,13 +29,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void register(View view){
         TextView txtvw = (TextView) findViewById(R.id.register);
-        txtvw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
                 Intent intent = new Intent(MainActivity.this,Register.class);
                 startActivity(intent);
-            }
-        });
+
     }
     public void showPassword(View view){
         checkbox = (CheckBox) findViewById(R.id.showpassword);
@@ -61,13 +58,11 @@ public class MainActivity extends AppCompatActivity {
         final String passsword1 = edit.getText().toString();
         final String passHash = hashCreator(passsword1);
         Log.e("passHash",passHash);
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
                 checkcredential checkcre = new checkcredential();
                 checkcre.execute(new String[] {username1,passHash});
-            }
-        });
+
+
     }
 
     public String hashCreator(String password){
@@ -101,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute (Boolean match){
-            //to do pooja
+
             if(match){
-                Intent intent = new Intent(MainActivity.this,homescreen.class);
+                Intent intent = new Intent(MainActivity.this,NavDrawer.class);
                 startActivity(intent);
             }
             else{
