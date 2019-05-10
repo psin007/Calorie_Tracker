@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import java.text.ParseException;
@@ -53,9 +51,9 @@ public class Register extends AppCompatActivity {
     public void addDob(View view){
         eText=(EditText) findViewById(R.id.dob);
         eText.setInputType(InputType.TYPE_NULL);
-//        eText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
+        eText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 final Calendar cldr = Calendar.getInstance();
                 int day = cldr.get(Calendar.DAY_OF_MONTH);
                 int month = cldr.get(Calendar.MONTH);
@@ -69,10 +67,12 @@ public class Register extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
-//            }
-//        });
+            }
+        });
 
     }
+
+
 
     public void registerationValues(View view){
         EditText edfirstName = (EditText)findViewById(R.id.firstName);
@@ -95,110 +95,41 @@ public class Register extends AppCompatActivity {
             flag = 1;
         }
         EditText edusername = (EditText)findViewById(R.id.username);
-        if (edusername.getText().length()==0){
+        final String username = edusername.getText().toString();
+        if (username.trim().length()==0){
             edemail.setError("Email can not be empty!");
             flag = 1;
         }
-        final String username = edusername.getText().toString();
-
         EditText edpassword = (EditText)findViewById(R.id.password);
-        if (edpassword.getText().length()==0){
+        final String password = edpassword.getText().toString();
+        if (password.trim().length()==0){
             edpassword.setError("password can not be empty!");
             flag = 1;
         }
-        final String password = edpassword.getText().toString();
-
-        EditText dateOfBirth = (EditText)findViewById(R.id.dob);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd=mm-yyyy");
-        try{
-            java.util.Date utilDate = sdf.parse(dateOfBirth.getText().toString());
-            java.sql.Date birthDate = new java.sql.Date(utilDate.getTime());
+        EditText dateOfBirth = (EditText)findViewById(R.id.password);
+        dateOfBirth.setText(date);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        try {
+            java.util.Date utilDate = sdf.parse(date);
+            birthDate = new java.sql.Date(utilDate.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         EditText edheight = (EditText)findViewById(R.id.height);
-        if(edheight.getText().length() == 0){
-            edheight.setError("Height can not be empty");
+        final String height = edheight.getText().toString();
+        if (height.trim().length()==0){
+            edpassword.setError("height can not be empty!");
             flag = 1;
         }
-        final double height = Double.parseDouble(edheight.getText().toString());
-
         EditText edweight = (EditText)findViewById(R.id.weight);
-        if(edweight.getText().length() == 0){
-            edheight.setError("Height can not be empty");
+        final String weight = edweight.getText().toString();
+        if (weight.trim().length()==0){
+            edweight.setError("weight can not be empty!");
             flag = 1;
+            //
         }
-        final double weight = Double.parseDouble(edheight.getText().toString());
 
-        RadioGroup rg = (RadioGroup)findViewById(R.id.radioSex);
-        int sexButtonId = rg.getCheckedRadioButtonId();
-        RadioButton sexradioButton = (RadioButton)findViewById(sexButtonId);
-        char sexRadioButtonText = sexradioButton.getText().toString().charAt(0);
-
-        Spinner postcodeSpinner = (Spinner)findViewById(R.id.postcode_spinner);
-        String postcode = postcodeSpinner.getSelectedItem().toString();
-
-        Spinner levelOfActivitySpinner = (Spinner)findViewById(R.id.levelOfActivity_spinner);
-        int levelOfActivity = Integer.parseInt(levelOfActivitySpinner.getSelectedItem().toString());
-
-        //addInCredentials();
-        //To do: call addincredentials with paramereters; password needs to be hashed; current date needs to be known and
-        //check if user already exists ir not
-        //then add method in RestClient
-    }
-    public void addInCredentials(String username,Integer userid,String password){
 
     }
-
-    public class Credential{
-        private String username;
-        private Integer userid;
-        private String passwordhash;
-        private Date signupdate;
-
-        public Credential() {
-        }
-
-        public Credential(String username,Integer userid,String passwordhash,Date signupdate) {
-            this.username = username;
-            this.userid = userid;
-            this.passwordhash = passwordhash;
-            this.signupdate = signupdate;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public Integer getUserid() {
-            return userid;
-        }
-
-        public void setUserid(Integer userid) {
-            this.userid = userid;
-        }
-
-        public String getPasswordhash() {
-            return passwordhash;
-        }
-
-        public void setPasswordhash(String passwordhash) {
-            this.passwordhash = passwordhash;
-        }
-
-        public Date getSignupdate() {
-            return signupdate;
-        }
-
-        public void setSignupdate(Date signupdate) {
-            this.signupdate = signupdate;
-        }
-    }
-
 
 }

@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class RestClient {
-    private static final String BASE_URL = "http://118.139.64.179:8080/CalorieTracker/webresources/";
+    private static final String BASE_URL = "http://118.139.68.100:8080/CalorieTracker/webresources/";
 
     public static Boolean checkusercre(String username,String passwordhash) {
         final String methodPath = "restcalorietracker.credential/checkCredentials/" + username +"/"+passwordhash;
@@ -34,7 +34,10 @@ public class RestClient {
 //            Log.e("inStream", inStream.nextLine().toString());
             while (inStream.hasNextLine()) {
                 textResult += inStream.nextLine();
+//                Log.e("textresult",textResult);
             }
+//            Log.e("inStream",inStream.nextLine());
+           // textResult = inStream.nextLine();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
