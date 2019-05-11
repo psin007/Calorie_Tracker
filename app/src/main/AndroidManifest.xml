@@ -18,7 +18,6 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".homescreen" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">
             <intent-filter>

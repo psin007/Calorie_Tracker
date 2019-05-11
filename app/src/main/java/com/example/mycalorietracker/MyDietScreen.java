@@ -12,6 +12,7 @@ public class MyDietScreen  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
         vEnterUnit = inflater.inflate(R.layout.mydietscreen, container, false);
+
         return vEnterUnit;
     }
 

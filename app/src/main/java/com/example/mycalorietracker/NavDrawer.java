@@ -23,14 +23,14 @@ public class NavDrawer extends AppCompatActivity
         setContentView(R.layout.activity_nav_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open,
@@ -40,7 +40,7 @@ public class NavDrawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView)
                 findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setTitle("Navigation Drawer");
+        getSupportActionBar().setTitle("Calorie Tracker"); //task 5 Screen name
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, new MyHomeScreen()).commit();
     }
@@ -49,8 +49,13 @@ public class NavDrawer extends AppCompatActivity
         int id = item.getItemId();
         Fragment nextFragment = null;
         switch (id) {
+            case R.id.nav_myhomeScreen:
+                nextFragment = new MyHomeScreen();
+                getSupportActionBar().setTitle("Calorie Tracker");
+                break;
             case R.id.nav_mydietScreen:
                 nextFragment = new MyDietScreen();
+                getSupportActionBar().setTitle("My Diet"); //Task 5 screen name
                 break;
         }
         FragmentManager fragmentManager = getFragmentManager();

@@ -7,9 +7,9 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class RestClient {
-    private static final String BASE_URL = "http://10.0.2.2:8080/CalorieTracker/webresources/";
+    private static final String BASE_URL = "http://118.139.81.163:8080/CalorieTracker/webresources/";
 
-    public static Boolean checkusercre(String username,String passwordhash) {
+    public static String checkusercredentials(String username,String passwordhash) {
         final String methodPath = "restcalorietracker.credential/checkCredentials/" + username +"/"+passwordhash;
         //initialise
         URL url = null;
@@ -26,25 +26,23 @@ public class RestClient {
             //set the connection method to GET
             conn.setRequestMethod("GET");
             //add http headers to set your response type to json
-            conn.setRequestProperty("Content-Type", "text/plain");
-            conn.setRequestProperty("Accept", "text/plain");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Accept", "application/json");
             //Read the response
             Scanner inStream = new Scanner(conn.getInputStream());
-            //read the input stream and store it as string
-//            Log.e("inStream", inStream.nextLine().toString());
+
             while (inStream.hasNextLine()) {
                 textResult += inStream.nextLine();
-//                Log.e("textresult",textResult);
             }
-//            Log.e("inStream",inStream.nextLine());
-           // textResult = inStream.nextLine();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             conn.disconnect();
         }
-        Log.e("textresult",textResult);
-        return Boolean.valueOf(textResult);
+        return textResult;
 
     }
+
+
 }
