@@ -23,14 +23,6 @@ public class NavDrawer extends AppCompatActivity
         setContentView(R.layout.activity_nav_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open,
@@ -56,6 +48,10 @@ public class NavDrawer extends AppCompatActivity
             case R.id.nav_mydietScreen:
                 nextFragment = new MyDietScreen();
                 getSupportActionBar().setTitle("My Diet"); //Task 5 screen name
+                break;
+            case R.id.nav_myMapsScreen:
+                nextFragment = new Maps();
+                getSupportActionBar().setTitle("Maps"); //Title of maps task
                 break;
         }
         FragmentManager fragmentManager = getFragmentManager();

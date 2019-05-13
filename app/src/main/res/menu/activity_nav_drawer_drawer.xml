@@ -7,5 +7,9 @@
         <item
             android:id="@+id/nav_mydietScreen"
             android:title="My diet" />
+        <item
+            android:id="@+id/nav_myMapsScreen"
+            android:title="Maps" />
+
     </group>
 </menu>
