@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0E68C"
     tools:context=".MainActivity"
     >
     <!-- Welcome message -->
@@ -13,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="468dp"
+        android:layout_marginBottom="408dp"
         android:gravity="center"
         android:text="Welcome!"
         android:textColor="#333333"
@@ -28,10 +27,10 @@
         android:id="@+id/edit_username"
         android:layout_width="281dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="368dp"
+        android:layout_marginBottom="324dp"
         android:hint="@string/username"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <!-- Password Label -->
@@ -39,31 +38,31 @@
         android:id="@+id/edit_password"
         android:layout_width="293dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="284dp"
+        android:layout_marginBottom="272dp"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <!-- Show Password Checkbox -->
     <CheckBox
         android:id="@+id/showpassword"
-        android:layout_width="358dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="252dp"
-        android:text="Show Password"
+        android:layout_width="324dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="216dp"
         android:onClick="showPassword"
+        android:text="Show Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <!-- Remember me Checkbox -->
     <CheckBox
         android:id="@+id/rememberme"
-        android:layout_width="130dp"
-        android:layout_height="33dp"
-        android:layout_marginRight="64dp"
-        android:layout_marginBottom="252dp"
+        android:layout_width="146dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="200dp"
         android:text="Remember me"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -72,24 +71,24 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="188dp"
+        android:layout_marginBottom="156dp"
         android:onClick="login"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <!-- Register -->
     <TextView
         android:id="@+id/register"
-        android:layout_width="117dp"
-        android:layout_height="63dp"
+        android:layout_width="113dp"
+        android:layout_height="73dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="140dp"
         android:clickable="true"
-        android:onClick="register"
         android:gravity="center"
+        android:onClick="register"
         android:text="@string/register"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="17sp"

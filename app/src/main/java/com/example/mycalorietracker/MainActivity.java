@@ -119,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                     String loggedpostcode = jsonobject.getJSONObject("users").getString("postcode");
                     String loggedlevelofactivity = jsonobject.getJSONObject("users").getString("levelofactivity");
                     String loggedstepsPerMile = jsonobject.getJSONObject("users").getString("stepspermile");
+
+
                     SharedPreferences.Editor loggedUsered = loggedinuser.edit();
                     loggedUsered.putString("username",loggeduserName);
                     loggedUsered.putString("userid",loggedid);
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     loggedUsered.putString("postcode",loggedpostcode);
                     loggedUsered.putString("levelofactivity",loggedlevelofactivity);
                     loggedUsered.putString("stepspermile",loggedstepsPerMile);
+                    loggedUsered.putString("newgoal","0");
                     loggedUsered.apply();
                     Intent intent = new Intent(MainActivity.this, NavDrawer.class);
                     startActivity(intent);

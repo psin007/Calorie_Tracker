@@ -4,11 +4,72 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin"
     >
+
     <TextView
         android:id="@+id/tv_welcomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_centerInParent="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:textColor="#000000"
+        android:gravity="center_horizontal"
+        android:includeFontPadding="false"/>
+
+
+    <TextView
+        android:id="@+id/tv_currentdateandtime"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_welcomeMsg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="86dp"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="292dp"
+        android:layout_height="330dp"
+        android:layout_below="@id/tv_currentdateandtime"
+        android:src="@drawable/homescreenimage" />
+
+    <TextView
+        android:id="@+id/goal"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView1"
+        android:layout_marginTop="-22dp"
+        android:text="Goal of today"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <EditText
+        android:id="@+id/edgoal"
+        android:layout_width="208dp"
+        android:layout_height="51dp"
+        android:layout_below="@id/imageView1"
+        android:layout_marginLeft="-144dp"
+        android:layout_marginTop="-33dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/goal"
+        android:inputType="numberDecimal"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/edit_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView1"
+        android:layout_marginTop="24dp"
+        android:text="Save new goal" />
 
 </RelativeLayout>
