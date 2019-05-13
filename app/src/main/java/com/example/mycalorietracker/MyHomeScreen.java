@@ -35,8 +35,9 @@ public class MyHomeScreen  extends Fragment {
                 SharedPreferences loggedinuser = getActivity().getSharedPreferences("Loggeduser", Context.MODE_PRIVATE);
                 SharedPreferences.Editor loggedUsered = loggedinuser.edit();
                 loggedUsered.putString("goalValue",goalUpdated);
+                loggedUsered.apply();
                 Toast.makeText(vDisplayUnit.getContext(),"Goal updated",Toast.LENGTH_SHORT).show();
-                //showgoal();
+                showgoal();
             }
         });
         return vDisplayUnit;

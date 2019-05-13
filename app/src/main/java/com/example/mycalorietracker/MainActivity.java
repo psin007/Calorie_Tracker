@@ -32,18 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-    }
-
-    public void register(View view) {
-        TextView txtvw = (TextView) findViewById(R.id.register);
-
-        Intent intent = new Intent(MainActivity.this, Register.class);
-        startActivity(intent);
-
-    }
-
-    public void showPassword(View view) {
         checkbox = (CheckBox) findViewById(R.id.showpassword);
         edtPassword = (EditText) findViewById(R.id.edit_password);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -58,7 +46,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
+
+    public void register(View view) {
+        TextView txtvw = (TextView) findViewById(R.id.register);
+
+        Intent intent = new Intent(MainActivity.this, Register.class);
+        startActivity(intent);
+
+    }
+
+
 
     public void login(View view) {
         Button signin = (Button) findViewById(R.id.Login);
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     loggedUsered.putString("postcode",loggedpostcode);
                     loggedUsered.putString("levelofactivity",loggedlevelofactivity);
                     loggedUsered.putString("stepspermile",loggedstepsPerMile);
-                    loggedUsered.putString("newgoal","0");
+                    loggedUsered.putString("goalValue","0");
                     loggedUsered.apply();
                     Intent intent = new Intent(MainActivity.this, NavDrawer.class);
                     startActivity(intent);

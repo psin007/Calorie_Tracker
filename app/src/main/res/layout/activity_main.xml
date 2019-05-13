@@ -51,7 +51,6 @@
         android:layout_width="324dp"
         android:layout_height="33dp"
         android:layout_marginBottom="216dp"
-        android:onClick="showPassword"
         android:text="Show Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
