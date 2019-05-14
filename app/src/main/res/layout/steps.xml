@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:id="@+id/stepsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginTop="69dp"
+        android:text="Enter Steps"
+
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+
+        />
+
+    <EditText
+        android:id="@+id/stepsEntered"
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_toRightOf="@+id/stepsLabel"
+        android:layout_marginLeft="8dp"
+        android:hint="100"
+        android:inputType="number"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_below="@id/stepsEntered"/>
+    <Button
+        android:id="@+id/button_force"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Force delete"
+        android:layout_toRightOf="@+id/btn_add"
+        android:layout_below="@+id/stepsEntered"/>
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:inputType="number"
+        android:layout_below="@+id/stepsEntered"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/list_view_steps"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_add"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="50dp"/>
+
+
+
+
+</RelativeLayout>

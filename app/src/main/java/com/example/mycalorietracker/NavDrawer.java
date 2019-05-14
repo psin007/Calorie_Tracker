@@ -3,16 +3,12 @@ package com.example.mycalorietracker;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 public class NavDrawer extends AppCompatActivity
@@ -45,6 +41,10 @@ public class NavDrawer extends AppCompatActivity
                 nextFragment = new MyHomeScreen();
                 getSupportActionBar().setTitle("Calorie Tracker");
                 break;
+            case R.id.nav_myStepsScreen:
+                nextFragment = new Steps();
+                getSupportActionBar().setTitle("Steps"); //Task 5 screen name
+                break;
             case R.id.nav_mydietScreen:
                 nextFragment = new MyDietScreen();
                 getSupportActionBar().setTitle("My Diet"); //Task 5 screen name
@@ -52,6 +52,10 @@ public class NavDrawer extends AppCompatActivity
             case R.id.nav_myMapsScreen:
                 nextFragment = new Maps();
                 getSupportActionBar().setTitle("Maps"); //Title of maps task
+                break;
+            case R.id.nav_myReportScreen:
+                nextFragment = new ReportScreen();
+                getSupportActionBar().setTitle("ReportScreen"); //Title of maps task
                 break;
         }
         FragmentManager fragmentManager = getFragmentManager();

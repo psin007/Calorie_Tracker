@@ -67,6 +67,7 @@ public class Register extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
+
             }
         });
 

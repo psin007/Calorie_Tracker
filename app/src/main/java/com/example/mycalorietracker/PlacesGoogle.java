@@ -51,7 +51,6 @@ public class PlacesGoogle {
         double lon=0;
         String name="";
         Park[] parks=null;
-        Log.d("poojalat","msg");
 
         try{
             JSONObject jsonObject = new JSONObject(result);
@@ -60,7 +59,7 @@ public class PlacesGoogle {
 
 
             for(int i = 0; i<jsonlinkArray.length();i++){
-                lat = jsonlinkArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getDouble("lat");
+                lat = jsonlinkArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getDouble("lat"); //from json response
                 lon = jsonlinkArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getDouble("lng");
                 name = jsonlinkArray.getJSONObject(i).getString("name");
                 parks[i]=new Park(lat,lon,name);

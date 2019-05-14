@@ -5,11 +5,17 @@
             android:id="@+id/nav_myhomeScreen"
             android:title="Dashboard" />
         <item
+            android:id="@+id/nav_myStepsScreen"
+            android:title="Steps" />
+        <item
             android:id="@+id/nav_mydietScreen"
             android:title="My diet" />
         <item
             android:id="@+id/nav_myMapsScreen"
             android:title="Maps" />
+        <item
+            android:id="@+id/nav_myReportScreen"
+            android:title="Report" />
 
     </group>
 </menu>
