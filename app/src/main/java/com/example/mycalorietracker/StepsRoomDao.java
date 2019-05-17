@@ -16,9 +16,6 @@ public interface StepsRoomDao {
     @Query("Select * from StepsRoom")
     List<StepsRoom> getAll();
 
-    @Query("Select count(steps_taken) from StepsRoom")
-    int totalSteps();
-
     @Query("Select * from StepsRoom where sid = :searchid LIMIT 1")
     StepsRoom findByID(int searchid);
 
@@ -33,6 +30,9 @@ public interface StepsRoomDao {
 
     @Update(onConflict = REPLACE)
     public void updateSteps(StepsRoom... stepsRooms);
+
+    @Query("DELETE FROM stepsroom")
+    void deleteAll();
 
 
 

@@ -2,6 +2,8 @@ package com.example.mycalorietracker;
 
 import android.app.Fragment;
 import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,11 +20,13 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class Steps  extends Fragment {
     View vSteps;
+
     private int positionSelected;
     Button updateButton;
     Button addButton;
@@ -38,7 +42,6 @@ public class Steps  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         vSteps = inflater.inflate(R.layout.steps, container, false);
-
         updateButton = (Button)vSteps.findViewById(R.id.button_update);
         addButton = (Button)vSteps.findViewById(R.id.btn_add);
         btnForce = (Button)vSteps.findViewById(R.id.button_force);
@@ -57,7 +60,7 @@ public class Steps  extends Fragment {
                 insertSteps.execute();
             }
         });
-        ReadDatabase readDatabase = new ReadDatabase();
+        final ReadDatabase readDatabase = new ReadDatabase();
         readDatabase.execute();
         stepsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,16 +86,22 @@ public class Steps  extends Fragment {
             }
         });
         //when user presses force button
-//        btnForce.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View v){
-//               deleteFromLocalDb();
-//            }
-//        });
+        btnForce.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                PostToServer postToServer= new PostToServer();
+                postToServer.addInReport(getActivity());
+                DeleteDatabase deleteDatabase = new DeleteDatabase();
+                deleteDatabase.execute();
+            }
+        });
 
 
 
         return vSteps;
     }
+
+
+
     private class InsertSteps extends AsyncTask<Void,Void,String>{
 
         @Override
@@ -117,7 +126,7 @@ public class Steps  extends Fragment {
         }
     }
 
-    private class ReadDatabase extends AsyncTask<Void, Void, Void> {
+      class ReadDatabase extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
             stepsAndTime.clear();
@@ -166,6 +175,18 @@ public class Steps  extends Fragment {
             updateButton.setVisibility(Button.GONE);
             addButton.setVisibility(Button.VISIBLE);
             btnForce.setVisibility(Button.VISIBLE);
+        }
+    }
+    private class DeleteDatabase extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            db.StepsRoomDao().deleteAll();
+            return null;
+        }
+        protected void onPostExecute(Void param) {
+            Toast.makeText(getActivity(),"All records deleted",Toast.LENGTH_SHORT).show();
+            stepsList.setAdapter(null);
+
         }
     }
 

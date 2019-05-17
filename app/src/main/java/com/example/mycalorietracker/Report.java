@@ -3,80 +3,82 @@ package com.example.mycalorietracker;
 import java.util.Date;
 
 public class Report {
-    private int userid;
-    private Date Reportdate;
-    private double totalcaloriesconsumed;
-    private double totalcaloriesburned;
-    private int totalsteps;
-    private double setgoal;
-    private int reportid;
+    private Date reportdate;
+    private Double totalcaloriesconsumed;
+    private Double totalcaloriesburned;
+    private Integer totalsteps;
+    private Double setgoal;
+    private Integer reportid;
+    private Credential userid;
 
     public Report() {
+
     }
 
-    public Report(int userid, Date reportdate, double totalcaloriesconsumed, double totalcaloriesburned, int totalsteps, double setgoal, int reportid) {
-        this.userid = userid;
-        Reportdate = reportdate;
+
+    public Report(Date reportdate, Double totalcaloriesconsumed, Double totalcaloriesburned, Integer totalsteps, Double setgoal, Integer reportid, Credential userid) {
+        this.reportdate = reportdate;
         this.totalcaloriesconsumed = totalcaloriesconsumed;
         this.totalcaloriesburned = totalcaloriesburned;
         this.totalsteps = totalsteps;
         this.setgoal = setgoal;
         this.reportid = reportid;
-    }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
         this.userid = userid;
     }
 
     public Date getReportdate() {
-        return Reportdate;
+        return reportdate;
     }
 
     public void setReportdate(Date reportdate) {
-        Reportdate = reportdate;
+        this.reportdate = reportdate;
     }
 
-    public double getTotalcaloriesconsumed() {
+    public Double getTotalcaloriesconsumed() {
         return totalcaloriesconsumed;
     }
 
-    public void setTotalcaloriesconsumed(double totalcaloriesconsumed) {
+    public void setTotalcaloriesconsumed(Double totalcaloriesconsumed) {
         this.totalcaloriesconsumed = totalcaloriesconsumed;
     }
 
-    public double getTotalcaloriesburned() {
+    public Double getTotalcaloriesburned() {
         return totalcaloriesburned;
     }
 
-    public void setTotalcaloriesburned(double totalcaloriesburned) {
+    public void setTotalcaloriesburned(Double totalcaloriesburned) {
         this.totalcaloriesburned = totalcaloriesburned;
     }
 
-    public int getTotalsteps() {
+    public Integer getTotalsteps() {
         return totalsteps;
     }
 
-    public void setTotalsteps(int totalsteps) {
+    public void setTotalsteps(Integer totalsteps) {
         this.totalsteps = totalsteps;
     }
 
-    public double getSetgoal() {
+    public Double getSetgoal() {
         return setgoal;
     }
 
-    public void setSetgoal(double setgoal) {
+    public void setSetgoal(Double setgoal) {
         this.setgoal = setgoal;
     }
 
-    public int getReportid() {
+    public Integer getReportid() {
         return reportid;
     }
 
-    public void setReportid(int reportid) {
+    public void setReportid(Integer reportid) {
         this.reportid = reportid;
+    }
+
+    public Credential getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Credential userid) {
+        this.userid = userid;
     }
 }
