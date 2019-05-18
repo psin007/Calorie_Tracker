@@ -31,9 +31,7 @@ public class MyDietScreen  extends Fragment {
                      String foodToSearch = edittext.getText().toString();
 
                      SearchGoogleSnippet searchSnippet = new SearchGoogleSnippet();
-//                     SearchImageLink searchImageLink = new SearchImageLink();
                      searchSnippet.execute(foodToSearch);
-//                     searchImageLink.execute(foodToSearch);
                      DownloadImage dimage = new DownloadImage((ImageView)vDietScreen.findViewById(R.id.imageSearch));
                      dimage.execute(foodToSearch);
             }
@@ -54,21 +52,7 @@ public class MyDietScreen  extends Fragment {
             textview.setText(SearchGoogleAPI.getFormattedSnippet(result));
         }
     }
-////to give credit to source of image
-//    private class SearchImageLink extends AsyncTask<String, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(String... params) {
-//            return SearchGoogleAPI.searchResult(params[0], new String[]{"num", "searchType"}, new String[]{"1", "image"});
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//
-//            TextView tv = (TextView) vDietScreen.findViewById(R.id.sourceImage);
-//            tv.setText(SearchGoogleAPI.getImageLink(result));
-//        }
-//    }
+
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
 

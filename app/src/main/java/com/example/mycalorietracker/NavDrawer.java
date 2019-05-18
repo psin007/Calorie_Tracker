@@ -1,7 +1,11 @@
 package com.example.mycalorietracker;
 
+import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,12 +15,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import java.util.Calendar;
+
 public class NavDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private AlarmManager alarmMgr;
+    private Intent alarmIntent;
+    private PendingIntent pendingIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmIntent = new Intent(this, ScheduledIntentService.class);
+        pendingIntent = PendingIntent.getService(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -46,7 +63,7 @@ public class NavDrawer extends AppCompatActivity
                 getSupportActionBar().setTitle("Steps"); //Task 5 screen name
                 break;
             case R.id.nav_mydietScreen:
-                nextFragment = new MyDietScreen();
+                nextFragment = new FoodCategoryFragment();
                 getSupportActionBar().setTitle("My Diet"); //Task 5 screen name
                 break;
             case R.id.nav_myMapsScreen:

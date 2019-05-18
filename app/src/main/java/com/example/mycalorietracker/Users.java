@@ -15,12 +15,11 @@ public class Users {
     private Integer postcode;
     private int levelofactivity;
     private Double stepspermile;
-    private Credential credential;
 
     public Users() {
     }
 
-    public Users(Integer userid, String name, String surname, String email, Date dob, Double height, Double weight, Character gender, String address, Integer postcode, int levelofactivity, Double stepspermile, Credential credential) {
+    public Users(Integer userid, String name, String surname, String email, Date dob, Double height, Double weight, Character gender, String address, Integer postcode, int levelofactivity, Double stepspermile) {
         this.userid = userid;
         this.name = name;
         this.surname = surname;
@@ -33,7 +32,6 @@ public class Users {
         this.postcode = postcode;
         this.levelofactivity = levelofactivity;
         this.stepspermile = stepspermile;
-        this.credential = credential;
     }
 
     public Integer getUserid() {
@@ -132,11 +130,5 @@ public class Users {
         this.stepspermile = stepspermile;
     }
 
-    public Credential getCredential() {
-        return credential;
-    }
 
-    public void setCredential(Credential credential) {
-        this.credential = credential;
-    }
 }

@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class ReportServer {
-    private static final String BASE_URL = "http://118.139.93.9:8080/CalorieTracker/webresources/";
+    private static final String BASE_URL = "http://192.168.1.107:8080/CalorieTracker/webresources/";
 
     public static String countRows() {
         final String methodPath = "restcalorietracker.report/count";
@@ -160,6 +160,84 @@ public class ReportServer {
         try {
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").create();
             String stringReportJson = gson.toJson(report);
+            url = new URL(BASE_URL + methodPath);
+            //open the connection
+            conn = (HttpURLConnection) url.openConnection();
+            //set the timeout
+            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(15000);
+            //set the connection method to POST
+            conn.setRequestMethod("POST");
+            //set the output to true
+            conn.setDoOutput(true);
+            //set length of the data you want to send
+            conn.setFixedLengthStreamingMode(stringReportJson.getBytes().length);
+            //add HTTP headers
+            conn.setRequestProperty("Content-Type", "application/json");
+            //Send the POST out
+            PrintWriter out= new PrintWriter(conn.getOutputStream());
+            out.print(stringReportJson);
+            out.close();
+
+            Scanner scanner = new Scanner(conn.getInputStream());
+            while (scanner.hasNext()) {
+
+            }
+            Log.i("error",new Integer(conn.getResponseCode()).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.disconnect();
+        }
+    }
+
+    public static void createConsumption(Consumption consumption){
+        //initialise
+        URL url = null;
+        HttpURLConnection conn = null;
+        final String methodPath="restcalorietracker.consumption/";
+        try {
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").create();
+            String stringReportJson = gson.toJson(consumption);
+            url = new URL(BASE_URL + methodPath);
+            //open the connection
+            conn = (HttpURLConnection) url.openConnection();
+            //set the timeout
+            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(15000);
+            //set the connection method to POST
+            conn.setRequestMethod("POST");
+            //set the output to true
+            conn.setDoOutput(true);
+            //set length of the data you want to send
+            conn.setFixedLengthStreamingMode(stringReportJson.getBytes().length);
+            //add HTTP headers
+            conn.setRequestProperty("Content-Type", "application/json");
+            //Send the POST out
+            PrintWriter out= new PrintWriter(conn.getOutputStream());
+            out.print(stringReportJson);
+            out.close();
+
+            Scanner scanner = new Scanner(conn.getInputStream());
+            while (scanner.hasNext()) {
+
+            }
+            Log.i("error",new Integer(conn.getResponseCode()).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.disconnect();
+        }
+    }
+
+    public static void createFood(Food food){
+        //initialise
+        URL url = null;
+        HttpURLConnection conn = null;
+        final String methodPath="restcalorietracker.food/";
+        try {
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").create();
+            String stringReportJson = gson.toJson(food);
             url = new URL(BASE_URL + methodPath);
             //open the connection
             conn = (HttpURLConnection) url.openConnection();

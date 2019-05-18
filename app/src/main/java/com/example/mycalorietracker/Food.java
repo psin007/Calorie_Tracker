@@ -26,6 +26,16 @@ public class Food {
         this.consumptionCollection = consumptionCollection;
     }
 
+    public Food(Integer foodid, String name, String category, Double calorieamount, String servingunit, Double servingamount, Double fat) {
+        this.foodid = foodid;
+        this.name = name;
+        this.category = category;
+        this.calorieamount = calorieamount;
+        this.servingunit = servingunit;
+        this.servingamount = servingamount;
+        this.fat = fat;
+    }
+
     public Integer getFoodid() {
         return foodid;
     }

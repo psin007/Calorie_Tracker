@@ -20,6 +20,7 @@ public class MyHomeScreen  extends Fragment {
     private TextView tvwelcome;
     private TextView tvdate;
     private EditText editGoal;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
@@ -61,6 +62,8 @@ public class MyHomeScreen  extends Fragment {
         String goalVal = loggedinuser.getString("goalValue","0");
         editGoal.setText(goalVal);
     }
+
+
 
 
 }
