@@ -78,6 +78,15 @@ public class Steps  extends Fragment {
                 timeSelectedInList=timeEntered;
             }
         });
+//        //when user presses force button
+//        btnForce.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v){
+//                PostToServer postToServer= new PostToServer();
+//                postToServer.addInReport(getActivity());
+//                DeleteDatabase deleteDatabase = new DeleteDatabase();
+//                deleteDatabase.execute();
+//            }
+//        });
         //when update button is clicked
         updateButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

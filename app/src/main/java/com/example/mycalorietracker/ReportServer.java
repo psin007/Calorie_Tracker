@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class ReportServer {
-    private static final String BASE_URL = "http://192.168.1.107:8080/CalorieTracker/webresources/";
+    private static final String BASE_URL = "http://192.168.1.43:8080/CalorieTracker/webresources/";
 
     public static String countRows() {
         final String methodPath = "restcalorietracker.report/count";
