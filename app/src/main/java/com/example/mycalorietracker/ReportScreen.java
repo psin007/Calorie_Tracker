@@ -93,11 +93,6 @@ public class ReportScreen extends Fragment {
         pieChart.setCenterText("Goal report");
         pieChart.setCenterTextSize(10);
 
-        barChart.setDrawBarShadow(false);
-        barChart.setDrawValueAboveBar(true);
-        barChart.setMaxVisibleValueCount(50);
-        barChart.setPinchZoom(false);
-        barChart.setDrawGridBackground(false);
 
         btn_submit_bar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -312,6 +307,13 @@ public class ReportScreen extends Fragment {
         }
     }
     public void showBar(){
+
+
+        barChart.setDrawBarShadow(false);
+        barChart.setDrawValueAboveBar(true);
+        barChart.setMaxVisibleValueCount(50);
+        barChart.setPinchZoom(false);
+        barChart.setDrawGridBackground(false);
         XAxis xl = barChart.getXAxis();
         xl.setGranularity(1f);
         xl.setCenterAxisLabels(true);
@@ -319,7 +321,13 @@ public class ReportScreen extends Fragment {
         xl.setValueFormatter(new IndexAxisValueFormatter(reporDates) {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return String.valueOf((int) value);
+                try{
+                    return String.valueOf((int) value);                }
+                catch(Exception e){
+                    return "";
+                }
+
+
             }
 
 
