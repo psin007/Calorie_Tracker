@@ -21,11 +21,21 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +61,10 @@ public class ReportScreen extends Fragment {
     TextView tv_label_Date_end_bar;
     TextView tv_label_Date_pie;
     Button btn_submit_bar;
+    BarChart barChart;
+    List<String>reporDates;
+    List<Float>calConsumed;
+    List<Float>calBurned;
 
     StepsRoomDatabase db = null;
     int uid=-1;
@@ -70,6 +84,7 @@ public class ReportScreen extends Fragment {
         btn_submit_bar = (Button)vReport.findViewById(R.id.submit_bar);
         editPieDate=(EditText) vReport.findViewById(R.id.input_date_pie);
         pieChart = (PieChart) vReport.findViewById(R.id.idPieChart);
+        barChart = (BarChart)vReport.findViewById(R.id.barchart);
 
         pieChart.setRotationEnabled(true);
 
@@ -78,24 +93,43 @@ public class ReportScreen extends Fragment {
         pieChart.setCenterText("Goal report");
         pieChart.setCenterTextSize(10);
 
+        barChart.setDrawBarShadow(false);
+        barChart.setDrawValueAboveBar(true);
+        barChart.setMaxVisibleValueCount(50);
+        barChart.setPinchZoom(false);
+        barChart.setDrawGridBackground(false);
+
+        btn_submit_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("pooja oclick","");
+                reporDates = new ArrayList<>();
+                calConsumed = new ArrayList<>();
+                calBurned = new ArrayList<>();
+                SharedPreferences loggedinuser = vReport.getContext().getSharedPreferences("Loggeduser", Context.MODE_PRIVATE);
+                int uid = Integer.parseInt(loggedinuser.getString("userid","0"));
+                GetReportData getReportData = new GetReportData();
+                getReportData.execute(String.valueOf(uid),ed_input_date_start_bar.getText().toString(),ed_input_date_end_bar.getText().toString());
+            }
+        });
         RadioGroup rg = (RadioGroup) vReport.findViewById(R.id.radio_charts);
 
             editPieDate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                 addDate();
+                 addDate(editPieDate);
                 }
             });
         ed_input_date_end_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addDate();
+                addDate(ed_input_date_end_bar);
             }
         });
         ed_input_date_start_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addDate();
+                addDate(ed_input_date_start_bar);
             }
         });
             submit = (Button) vReport.findViewById(R.id.submit_chart);
@@ -123,6 +157,7 @@ public class ReportScreen extends Fragment {
                    submit.setVisibility(View.VISIBLE);
                    btn_submit_bar.setVisibility(View.GONE);
                    pieChart.setVisibility(View.VISIBLE);
+                   barChart.setVisibility(View.GONE);
 
                }
                else{
@@ -135,6 +170,7 @@ public class ReportScreen extends Fragment {
                    submit.setVisibility(View.GONE);
                    btn_submit_bar.setVisibility(View.VISIBLE);
                    pieChart.setVisibility(View.GONE);
+                   barChart.setVisibility(View.VISIBLE);
                }
 
            }
@@ -142,7 +178,7 @@ public class ReportScreen extends Fragment {
 
         return vReport;
     }
-    public void addDate()
+    public void addDate(final EditText etext)
     {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
@@ -153,7 +189,7 @@ public class ReportScreen extends Fragment {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 //                        editPieDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-            editPieDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            etext.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
         }
     }   , year, month, day);
                     picker.show();}
@@ -249,6 +285,108 @@ public class ReportScreen extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
+    }
+
+    class GetReportData extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return ReportServer.getReportData(strings[0],strings[1],strings[2]);
+        }
+
+        protected void onPostExecute(String result) {
+            Log.d("pooja result",result);
+
+            try {
+                JSONArray jsonArray = new JSONArray(result);
+                for(int i = 0;i<jsonArray.length();i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    calBurned.add(Float.parseFloat(jsonObject.getString("totalcaloriesburned")));
+                    calConsumed.add(Float.parseFloat(jsonObject.getString("totalcaloriesconsumed")));
+                    reporDates.add(jsonObject.getString("reportdate"));
+                    showBar();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void showBar(){
+        XAxis xl = barChart.getXAxis();
+        xl.setGranularity(1f);
+        xl.setCenterAxisLabels(true);
+
+        xl.setValueFormatter(new IndexAxisValueFormatter(reporDates) {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return String.valueOf((int) value);
+            }
+
+
+        });
+
+        YAxis leftAxis = barChart.getAxisLeft();
+        leftAxis.setValueFormatter(new IndexAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return String.valueOf((int) value);
+            }
+
+        });
+
+        leftAxis.setDrawGridLines(false);
+        leftAxis.setSpaceTop(30f);
+        leftAxis.setAxisMinValue(0f); // this replaces setStartAtZero(true
+        barChart.getAxisRight().setEnabled(false);
+
+        //data
+        float groupSpace = 0.04f;
+        float barSpace = 0.02f; // x2 dataset
+        float barWidth = 0.46f; // x2 dataset
+
+
+
+        List<BarEntry> yVals1 = new ArrayList<BarEntry>();
+        List<BarEntry> yVals2 = new ArrayList<BarEntry>();
+
+
+        for (int i = 0; i < calConsumed.size(); i++) {
+            yVals1.add(new BarEntry(i, calConsumed.get(i)));
+        }
+
+        for (int i = 0; i < calBurned.size(); i++) {
+            yVals2.add(new BarEntry(i, calBurned.get(i)));
+        }
+
+
+        BarDataSet set1, set2;
+
+        if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
+            set1 = (BarDataSet)barChart.getData().getDataSetByIndex(0);
+            set2 = (BarDataSet)barChart.getData().getDataSetByIndex(1);
+            set1.setValues(yVals1);
+            set2.setValues(yVals2);
+            barChart.getData().notifyDataChanged();
+            barChart.notifyDataSetChanged();
+        } else {
+            // create 2 datasets with different types
+            set1 = new BarDataSet(yVals1, "Calories consumed");
+            set1.setColor(Color.rgb(104, 241, 175));
+            set2 = new BarDataSet(yVals2, "Calories burned");
+            set2.setColor(Color.rgb(164, 228, 251));
+
+            ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+            dataSets.add(set1);
+            dataSets.add(set2);
+
+            BarData data = new BarData(dataSets);
+            barChart.setData(data);
+        }
+
+        barChart.getBarData().setBarWidth(barWidth);
+        barChart.getXAxis().setAxisMinimum(0);
+        barChart.groupBars(0, groupSpace, barSpace);
+        barChart.invalidate();
     }
 }
 
