@@ -109,7 +109,7 @@
         android:textColor="#000000"
         android:visibility="gone"
         />
-    <!-- StartDate of report for bar graph label-->
+    <!-- EndDate of report for bar graph label-->
     <EditText
         android:id="@+id/input_date_end_bar"
         android:layout_width="wrap_content"
@@ -122,13 +122,16 @@
         android:textSize="18sp"
         android:hint="dd/mm/yyyy"
         android:visibility="gone"
+        android:focusableInTouchMode="false"
+
         />
     <!-- for bar graph -->
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/submit_bar"/>
+        android:layout_below="@+id/submit_bar"
+        android:visibility="gone"/>
     <Button
         android:id="@+id/submit_chart"
         android:layout_width="match_parent"

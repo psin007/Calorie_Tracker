@@ -120,6 +120,10 @@ public class FoodCategoryFragment extends Fragment {
                 if(editQuanity.getText().toString().isEmpty()){
                     editQuanity.setError("Enter quantity");
                 }
+                else if(editQuanity.getText().toString().charAt(0)=='.'){
+                    editQuanity.setError("Quanity cannot start from decimal");
+
+                }
                 else{
                     consumption = new Consumption();
                     SharedPreferences loggedinuser = viewCategory.getContext().getSharedPreferences("Loggeduser", Context.MODE_PRIVATE);

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +49,15 @@ public class Register extends AppCompatActivity {
     char gender;
     int levelOfActivity;
     Double stepsPerMile;
+    EditText edfirstName;
+    EditText edemail;
+    EditText edSurname;
+    EditText edusername;
+    EditText edpassword;
+    EditText edAddress;
+    EditText stepsPerMileed;
+    EditText edweight;
+    EditText edheight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +104,7 @@ public class Register extends AppCompatActivity {
                                 eText.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                             }
                         }, year, month, day);
+                picker.getDatePicker().setMaxDate(new Date().getTime());
                 picker.show();
 
             }
@@ -103,65 +114,84 @@ public class Register extends AppCompatActivity {
 
 
 
-    public void registrationValues(View view){
-        EditText edfirstName = (EditText)findViewById(R.id.firstName);
-        if (edfirstName.getText().toString().isEmpty()){
+    public void registrationValues(View view) {
+        int flag = 0;
+        edfirstName = (EditText) findViewById(R.id.firstName);
+        if (edfirstName.getText().toString().isEmpty()) {
             edfirstName.setError("First Name can not be empty!");
+            flag = 1;
         }
-        firstName = edfirstName.getText().toString();
 
-        EditText edSurname = (EditText)findViewById(R.id.surName);
-        if (edSurname.getText().toString().isEmpty()){
-            edfirstName.setError("Surname can not be empty!");
+        edSurname = (EditText) findViewById(R.id.surName);
+        if (edSurname.getText().toString().isEmpty()) {
+            edSurname.setError("Surname can not be empty!");
+            flag = 1;
         }
-        surname = edSurname.getText().toString();
 
-        EditText edemail = (EditText)findViewById(R.id.email);
-        if (edemail.getText().toString().isEmpty()){
+        edemail = (EditText) findViewById(R.id.email);
+        if (edemail.getText().toString().isEmpty()) {
             edemail.setError("Surname can not be empty!");
+            flag = 1;
         }
-        email = edemail.getText().toString();
 
-        EditText edusername = (EditText)findViewById(R.id.username);
-        if (edusername.getText().toString().isEmpty()){
-            edemail.setError("Email can not be empty!");
+        edusername = (EditText) findViewById(R.id.username);
+        if (edusername.getText().toString().isEmpty()) {
+            edusername.setError("Email can not be empty!");
+            flag = 1;
         }
-        username = edusername.getText().toString();
 
-        EditText edpassword = (EditText)findViewById(R.id.password);
-        if (edpassword.getText().toString().isEmpty()){
+        edpassword = (EditText) findViewById(R.id.password);
+        if (edpassword.getText().toString().isEmpty()) {
             edpassword.setError("password can not be empty!");
+            flag = 1;
         }
-        password = edpassword.getText().toString();
 
 
-        EditText edAddress = (EditText)findViewById(R.id.address);
-        if(edAddress.getText().toString().isEmpty()){
+        edAddress = (EditText) findViewById(R.id.address);
+        if (edAddress.getText().toString().isEmpty()) {
             edAddress.setError("Address can not be empty");
+            flag = 1;
         }
-        address=edAddress.getText().toString();
 
-        EditText stepsPerMileed = (EditText)findViewById(R.id.stepsPerMile);
-        if(stepsPerMileed.getText().toString().isEmpty()){
-            edAddress.setError("Steps per mile can not be empty");
+        stepsPerMileed = (EditText) findViewById(R.id.stepsPerMile);
+        if (stepsPerMileed.getText().toString().isEmpty()) {
+            stepsPerMileed.setError("Steps per mile can not be empty");
+            flag = 1;
         }
-        stepsPerMile=Double.parseDouble(stepsPerMileed.getText().toString());
-
-        if(eText.getText().toString().isEmpty()){
+        eText=(EditText) findViewById(R.id.dob);
+        if (eText.getText().toString().isEmpty()) {
             eText.setError("Date of birth can not be empty");
+            flag = 1;
         }
-        dob=eText.getText().toString();
 
-        EditText edheight = (EditText)findViewById(R.id.height);
-        if(edheight.getText().toString().isEmpty()){
+        edheight = (EditText) findViewById(R.id.height);
+        if (edheight.getText().toString().isEmpty()) {
             edheight.setError("Height can not be empty");
+            flag = 1;
         }
-        height = Double.parseDouble(edheight.getText().toString());
 
-        EditText edweight = (EditText)findViewById(R.id.weight);
-        if(edweight.getText().toString().isEmpty()){
+        edweight = (EditText) findViewById(R.id.weight);
+        if (edweight.getText().toString().isEmpty()) {
             edweight.setError("Weight can not be empty");
+            flag = 1;
         }
+        if(flag==0){
+            extractValues();
+        }
+
+    }
+    public void extractValues(){
+
+
+        firstName = edfirstName.getText().toString();
+        surname = edSurname.getText().toString();
+        email = edemail.getText().toString();
+        username = edusername.getText().toString();
+        password = edpassword.getText().toString();
+        address = edAddress.getText().toString();
+        stepsPerMile = Double.parseDouble(stepsPerMileed.getText().toString());
+        dob = eText.getText().toString();
+        height = Double.parseDouble(edheight.getText().toString());
         weight = Double.parseDouble(edweight.getText().toString());
 
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioSex);
@@ -273,7 +303,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    class AddToUsers extends AsyncTask<Users,Void,String>{
+    class AddToUsers extends AsyncTask<Users,Void,String> {
 
         @Override
         protected String doInBackground(Users... users) {
@@ -281,9 +311,12 @@ public class Register extends AppCompatActivity {
             return "User Added";
         }
 
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
+            Toast.makeText(getApplicationContext(), "Registration done", Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(Register.this, MainActivity.class);
-            startActivity(intent);        }
+            startActivity(intent);
+        }
     }
 
 }

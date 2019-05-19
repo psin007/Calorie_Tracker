@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/tv_total_steps"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="136dp"
+        android:layout_marginLeft="130dp"
         android:layout_toRightOf="@id/tv_total_steps"
         android:textColor="#000000"
         android:textSize="18sp" />

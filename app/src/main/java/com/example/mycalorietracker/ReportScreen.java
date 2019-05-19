@@ -44,6 +44,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ReportScreen extends Fragment {
@@ -187,7 +188,9 @@ public class ReportScreen extends Fragment {
             etext.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
         }
     }   , year, month, day);
-                    picker.show();}
+        picker.getDatePicker().setMaxDate(new Date().getTime());
+
+        picker.show();}
     public void getDataValues(){
         //calConsumed
         //CalBurnedAtrest
@@ -214,7 +217,6 @@ public class ReportScreen extends Fragment {
         }
 
         protected void onPostExecute(String result){
-            Log.d("resyltPooja",result);
             try {
                 if(!result.isEmpty()) {
 
@@ -315,7 +317,10 @@ public class ReportScreen extends Fragment {
         barChart.setPinchZoom(false);
         barChart.setDrawGridBackground(false);
         XAxis xl = barChart.getXAxis();
+
+        xl.setGranularityEnabled(true);
         xl.setGranularity(1f);
+
         xl.setCenterAxisLabels(true);
 
         xl.setValueFormatter(new IndexAxisValueFormatter(reporDates) {
@@ -392,7 +397,7 @@ public class ReportScreen extends Fragment {
         }
 
         barChart.getBarData().setBarWidth(barWidth);
-        barChart.getXAxis().setAxisMinimum(0);
+        barChart.getXAxis().setAxisMinimum(0f);
         barChart.groupBars(0, groupSpace, barSpace);
         barChart.invalidate();
     }

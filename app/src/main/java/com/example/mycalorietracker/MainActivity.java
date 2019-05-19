@@ -29,7 +29,8 @@ import java.security.NoSuchAlgorithmException;
 public class MainActivity extends AppCompatActivity {
     private CheckBox checkbox;
     private android.widget.EditText edtPassword;
-
+    EditText edttxt;
+    EditText edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,12 +65,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view) {
         Button signin = (Button) findViewById(R.id.Login);
-        EditText edttxt = (EditText) findViewById(R.id.edit_username);
+
+        edttxt = (EditText) findViewById(R.id.edit_username);
+        if(edttxt.getText().toString().isEmpty()){
+            edttxt.setError("Username can not be empty");
+        };
         final String username1 = edttxt.getText().toString();
-        EditText edit = (EditText) findViewById(R.id.edit_password);
+        edit = (EditText) findViewById(R.id.edit_password);
+        if(edit.getText().toString().isEmpty()){
+            edit.setError("password can not be empty");
+        };
         final String passsword1 = edit.getText().toString();
         final String passHash = hashCreator(passsword1);
-        Log.e("passHash", passHash);
 
         checkcredential checkcre = new checkcredential();
         checkcre.execute(new String[]{username1, passHash});
