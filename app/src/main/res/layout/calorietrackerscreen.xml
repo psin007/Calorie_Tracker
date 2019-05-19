@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="50dp">
+
+    <TextView
+        android:id="@+id/tv_goalset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="Goal Set"
+        android:textColor="#000000"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_goalset_value"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_goalset"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@id/tv_goalset"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+
+
+    <TextView
+        android:id="@+id/tv_total_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="Total steps"
+        android:layout_below="@+id/tv_goalset"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/tv_total_steps_value"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_total_steps"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="136dp"
+        android:layout_toRightOf="@id/tv_total_steps"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_cal_burned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="Calories burned"
+        android:layout_below="@+id/tv_total_steps"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/tv_cal_burned_value"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_cal_burned"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="93dp"
+        android:layout_toRightOf="@id/tv_cal_burned"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tv_cal_consumed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="calories consumed"
+        android:layout_below="@+id/tv_cal_burned"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/tv_cal_consumed_value"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_cal_consumed"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="67dp"
+        android:layout_toRightOf="@id/tv_cal_consumed"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+</RelativeLayout>

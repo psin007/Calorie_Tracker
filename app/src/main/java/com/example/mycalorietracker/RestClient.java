@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class RestClient {
-    private static final String BASE_URL = "http://192.168.1.43:8080/CalorieTracker/webresources/";
+    private static final String BASE_URL = "http://118.139.93.9:8080/CalorieTracker/webresources/";
 
     public static String checkusercredentials(String username,String passwordhash) {
         final String methodPath = "restcalorietracker.credential/checkCredentials/" + username +"/"+passwordhash;
@@ -165,7 +165,7 @@ public class RestClient {
         //initialise
         URL url = null;
         HttpURLConnection conn = null;
-        final String methodPath="restcalorietracker.credential/";
+        final String methodPath="restcalorietracker.users/";
         try {
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").create();
             String stringReportJson = gson.toJson(users);

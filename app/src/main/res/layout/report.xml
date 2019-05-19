@@ -2,9 +2,153 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="30dp"
+    >
+
+    <RadioGroup
+        android:id="@+id/radio_charts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/radioPie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pie Chart"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radioBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bar Graph" />
+
+    </RadioGroup>
+    <!-- Date of report for pie chart label-->
     <TextView
+        android:id="@+id/label_Date_pie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_charts"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:text="Date"
+        android:textColor="#000000"
+        />
+    <!-- Date of report for pie chart input-->
+    <EditText
+        android:id="@+id/input_date_pie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/label_Date_pie"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/label_Date_pie"
+        android:textSize="18sp"
+        android:hint="dd/mm/yyyy"
+        android:focusableInTouchMode="false"
+
+        />
+    <!-- for pie chart-->
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/idPieChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Welcome to Unit Recorder" />
+        android:layout_below="@+id/submit_chart"
+        android:layout_marginTop="8dp"
+        />
+
+
+    <!--</com.github.mikephil.charting.charts.PieChart>-->
+    <!-- StartDate of report for bar graph label-->
+
+    <TextView
+        android:id="@+id/label_Date_start_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_charts"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"
+        android:text="Start date"
+        android:visibility="gone"
+        android:textColor="#000000"
+        />
+    <!-- StartDate of report for bar graph label-->
+    <EditText
+        android:id="@+id/input_date_start_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/label_Date_start_bar"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/label_Date_start_bar"
+        android:textSize="18sp"
+        android:hint="dd/mm/yyyy"
+        android:focusableInTouchMode="false"
+        android:visibility="gone"
+        />
+    <!-- StartDate of report for bar graph label-->
+
+    <TextView
+        android:id="@+id/label_Date_end_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_Date_start_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"
+        android:text="End date"
+        android:textColor="#000000"
+        android:visibility="gone"
+        />
+    <!-- StartDate of report for bar graph label-->
+    <EditText
+        android:id="@+id/input_date_end_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/label_Date_end_bar"
+        android:layout_below="@id/label_Date_start_bar"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/label_Date_end_bar"
+        android:textSize="18sp"
+        android:hint="dd/mm/yyyy"
+        android:visibility="gone"
+        />
+    <!-- for bar graph -->
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/submit_bar"/>
+    <Button
+        android:id="@+id/submit_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="@string/submit"
+        android:layout_below="@id/input_date_pie"
+        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/submit_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="@string/submit"
+        android:layout_below="@id/input_date_end_bar"
+        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
 </RelativeLayout>

@@ -41,7 +41,13 @@ public class Register extends AppCompatActivity {
     double weight;
     String passwordhash;
     int uid;
+    String dob;
     Date signupDate;
+    Integer postCode;
+    String address;
+    char gender;
+    int levelOfActivity;
+    Double stepsPerMile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +91,7 @@ public class Register extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                eText.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                             }
                         }, year, month, day);
                 picker.show();
@@ -99,155 +105,185 @@ public class Register extends AppCompatActivity {
 
     public void registrationValues(View view){
         EditText edfirstName = (EditText)findViewById(R.id.firstName);
-        firstName = edfirstName.getText().toString();
-        int flag = 0;
-        if (firstName.trim().length()==0){
+        if (edfirstName.getText().toString().isEmpty()){
             edfirstName.setError("First Name can not be empty!");
-            flag = 1;
         }
+        firstName = edfirstName.getText().toString();
+
         EditText edSurname = (EditText)findViewById(R.id.surName);
-        surname = edSurname.getText().toString();
-        if (surname.trim().length()==0){
+        if (edSurname.getText().toString().isEmpty()){
             edfirstName.setError("Surname can not be empty!");
-            flag = 1;
         }
+        surname = edSurname.getText().toString();
+
         EditText edemail = (EditText)findViewById(R.id.email);
-        email = edSurname.getText().toString();
-        if (email.trim().length()==0){
+        if (edemail.getText().toString().isEmpty()){
             edemail.setError("Surname can not be empty!");
-            flag = 1;
         }
+        email = edemail.getText().toString();
+
         EditText edusername = (EditText)findViewById(R.id.username);
-        username = edusername.getText().toString();
-        if (username.trim().length()==0){
+        if (edusername.getText().toString().isEmpty()){
             edemail.setError("Email can not be empty!");
-            flag = 1;
         }
+        username = edusername.getText().toString();
+
         EditText edpassword = (EditText)findViewById(R.id.password);
-        password = edpassword.getText().toString();
-        if (password.trim().length()==0){
+        if (edpassword.getText().toString().isEmpty()){
             edpassword.setError("password can not be empty!");
-            flag = 1;
         }
+        password = edpassword.getText().toString();
 
-        EditText dateOfBirth = (EditText)findViewById(R.id.dob);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        try {
 
-            java.util.Date utilDate = sdf.parse(dateOfBirth.getText().toString());
-            birthDate = new java.sql.Date(utilDate.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
+        EditText edAddress = (EditText)findViewById(R.id.address);
+        if(edAddress.getText().toString().isEmpty()){
+            edAddress.setError("Address can not be empty");
         }
+        address=edAddress.getText().toString();
 
+        EditText stepsPerMileed = (EditText)findViewById(R.id.stepsPerMile);
+        if(stepsPerMileed.getText().toString().isEmpty()){
+            edAddress.setError("Steps per mile can not be empty");
+        }
+        stepsPerMile=Double.parseDouble(stepsPerMileed.getText().toString());
+
+        if(eText.getText().toString().isEmpty()){
+            eText.setError("Date of birth can not be empty");
+        }
+        dob=eText.getText().toString();
 
         EditText edheight = (EditText)findViewById(R.id.height);
+        if(edheight.getText().toString().isEmpty()){
+            edheight.setError("Height can not be empty");
+        }
         height = Double.parseDouble(edheight.getText().toString());
-        if (edheight.length()==0){
-            edheight.setError("height can not be empty!");
-            flag = 1;
-        }
+
         EditText edweight = (EditText)findViewById(R.id.weight);
-        weight = Double.parseDouble(edweight.getText().toString());
-        if (edweight.length()==0){
-            edweight.setError("weight can not be empty!");
-            flag = 1;
+        if(edweight.getText().toString().isEmpty()){
+            edweight.setError("Weight can not be empty");
         }
+        weight = Double.parseDouble(edweight.getText().toString());
+
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioSex);
         int sexButtonId = rg.getCheckedRadioButtonId();
         RadioButton sexRadioButton = (RadioButton) findViewById(sexButtonId);
         String sexRadioButtonText = sexRadioButton.getText().toString();
+        gender = sexRadioButtonText.charAt(0);
 
         Spinner postCodeSpinner = (Spinner) findViewById(R.id.postcode_spinner);
-        String postCode = postCodeSpinner.getSelectedItem().toString();
+        String postCodeStr = postCodeSpinner.getSelectedItem().toString();
+        postCode = Integer.parseInt(postCodeStr);
 
         Spinner levelOfActivitySpinner = (Spinner) findViewById(R.id.levelOfActivity_spinner);
-        String levelOfActivity = levelOfActivitySpinner.getSelectedItem().toString();
+        levelOfActivity = Integer.parseInt(levelOfActivitySpinner.getSelectedItem().toString());
 
         MainActivity mainActivity = new MainActivity();
         passwordhash=mainActivity.hashCreator(password);
 
-//        CheckIfExist checkIfExist = new CheckIfExist();
-//        checkIfExist.execute(username);
+        CheckIfExist checkIfExist = new CheckIfExist();
+        checkIfExist.execute(username);
 
     }
 
-//    private class CheckIfExist extends AsyncTask<String, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(String... params) {
-//            String username = params[0];
-//            return RestClient.checkUsername(username);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String match) {
-//                if ((match.equals("[]"))) {
-//                        GetUserId getUserId = new GetUserId();
-//                        getUserId.execute();
-//
-//                } else {
-//                    EditText editText = (EditText) findViewById(R.id.username);
-//                    editText.setError("Username already exists");
-//                }
-//        }
-//    }
-//
-//    private class GetUserId extends AsyncTask<Void, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(Void... strings) {
-//            return RestClient.countRows();
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//             uid = Integer.parseInt(result)+1;
-//             beforeSendingToCredential();
-//        }
-//    }
-//    public void beforeSendingToCredential(){
-//        Credential credential = new Credential();
-//        credential.setUserid(uid);
-//        credential.setPasswordhash(passwordhash);
-//        credential.setUsername(username);
-//        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd ");
-//        signupDate = new Date(System.currentTimeMillis());
-//        credential.setSignupdate(signupDate);
-//        AddToCred addToCred = new AddToCred();
-//        addToCred.execute();
-//    }
-//
-//    class AddToCred extends AsyncTask<Credential,Void,String>{
-//
-//        @Override
-//        protected String doInBackground(Credential... credentials) {
-//            RestClient.createCredential(credentials[0]);
-//            return "Credential Added";
-//        }
-//
-//        protected void onPostExecute(String result){
-//            beforeSendingToUsers();
-//            AddToUsers addToUsers = new AddToUsers();
-//            addToUsers.execute();
-//        }
-//    }
-//
-//    public void beforeSendingToUsers(){
-//
-//    }
-//
-//    class AddToUsers extends AsyncTask<Users,Void,String>{
-//
-//        @Override
-//        protected String doInBackground(Users... users) {
-//            RestClient.createUser(users[0]);
-//            return "Credential Added";
-//        }
-//
-//        protected void onPostExecute(String result){
-//            Intent intent = new Intent(Register.this, NavDrawer.class);
-//            startActivity(intent);        }
-//    }
+    private class CheckIfExist extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String username = params[0];
+            return RestClient.checkUsername(username);
+        }
+
+        @Override
+        protected void onPostExecute(String match) {
+                if ((match.equals("[]"))) {
+                        GetUserId getUserId = new GetUserId();
+                        getUserId.execute();
+
+                } else {
+                    EditText editText = (EditText) findViewById(R.id.username);
+                    editText.setError("Username already exists");
+                }
+        }
+    }
+
+    private class GetUserId extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... strings) {
+            return RestClient.countRows();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+             uid = Integer.parseInt(result)+1;
+             beforeSendingToCredential();
+        }
+    }
+    public void beforeSendingToCredential(){
+        Credential credential = new Credential();
+        credential.setUserid(uid);
+        credential.setPasswordhash(passwordhash);
+        credential.setUsername(username);
+        //SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd ");
+        signupDate = new Date(System.currentTimeMillis());
+        credential.setSignupdate(signupDate);
+        AddToCred addToCred = new AddToCred();
+        addToCred.execute(credential);
+    }
+
+    class AddToCred extends AsyncTask<Credential,Void,String>{
+
+        @Override
+        protected String doInBackground(Credential... credentials) {
+            RestClient.createCredential(credentials[0]);
+            return "Credential Added";
+        }
+
+        protected void onPostExecute(String result){
+            beforeSendingToUsers();
+
+        }
+    }
+
+    public void beforeSendingToUsers(){
+        Credential credential = new Credential();
+        credential.setUserid(uid);
+        Users user = new Users();
+        user.setCredential(credential);
+        user.setAddress(address);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            Date date = sdf.parse(dob);
+            user.setDob(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        user.setEmail(email);
+        user.setGender(gender);
+        user.setHeight(height);
+        user.setLevelofactivity(levelOfActivity);
+        user.setName(firstName);
+        user.setStepspermile(stepsPerMile);
+        user.setWeight(weight);
+        user.setSurname(surname);
+        user.setUserid(uid);
+        user.setPostcode(postCode);
+        AddToUsers addToUsers = new AddToUsers();
+        addToUsers.execute(user);
+
+    }
+
+    class AddToUsers extends AsyncTask<Users,Void,String>{
+
+        @Override
+        protected String doInBackground(Users... users) {
+            RestClient.createUser(users[0]);
+            return "User Added";
+        }
+
+        protected void onPostExecute(String result){
+            Intent intent = new Intent(Register.this, MainActivity.class);
+            startActivity(intent);        }
+    }
 
 }

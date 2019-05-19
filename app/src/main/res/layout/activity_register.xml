@@ -280,9 +280,9 @@
             android:text="@string/address"
             android:textColor="#000000"
             />
-        <!-- Address street input-->
+        <!-- Address input-->
         <EditText
-            android:id="@+id/streetaddress"
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/label_address"
@@ -292,24 +292,13 @@
             android:textSize="18sp"
             android:hint="Address line 1"
             />
-        <!-- Address suburb input-->
-        <EditText
-            android:id="@+id/suburbaddress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/streetaddress"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="20dp"
-            android:textSize="18sp"
-            android:hint="Address line 2"
-            />
+
         <!-- Postcode label-->
         <TextView
             android:id="@+id/label_postcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/suburbaddress"
+            android:layout_below="@id/address"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="25dp"
             android:textSize="18sp"

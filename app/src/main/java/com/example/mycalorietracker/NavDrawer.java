@@ -60,19 +60,24 @@ public class NavDrawer extends AppCompatActivity
                 break;
             case R.id.nav_myStepsScreen:
                 nextFragment = new Steps();
-                getSupportActionBar().setTitle("Steps"); //Task 5 screen name
+                getSupportActionBar().setTitle("Steps");
                 break;
             case R.id.nav_mydietScreen:
                 nextFragment = new FoodCategoryFragment();
-                getSupportActionBar().setTitle("My Diet"); //Task 5 screen name
+                getSupportActionBar().setTitle("My Diet");
+                break;
+
+            case R.id.nav_myCalTracker:
+                nextFragment = new CalorieTrackerScreen();
+                getSupportActionBar().setTitle("Tracker");
                 break;
             case R.id.nav_myMapsScreen:
                 nextFragment = new Maps();
-                getSupportActionBar().setTitle("Maps"); //Title of maps task
+                getSupportActionBar().setTitle("Maps");
                 break;
             case R.id.nav_myReportScreen:
                 nextFragment = new ReportScreen();
-                getSupportActionBar().setTitle("ReportScreen"); //Title of maps task
+                getSupportActionBar().setTitle("ReportScreen");
                 break;
         }
         FragmentManager fragmentManager = getFragmentManager();
