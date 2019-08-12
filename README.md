@@ -1,2 +1,2 @@
 # Calorie_Tracker
-A calorie tracker android application which interacts with APIs and generate report in bar and pie chart apart from several other features. It uses list view, update on list view, shared preferances, alarm manager, intent service, alarm manager, SQLite, Room persistence library amongst others.
+Implemented a database using entity classes of Java and created various REST web services to interact with an android application which tracks the calorie intake of user and prepares and stores report every midnight automatically at the back-end server along with its presentation in bar and pie chart in mobile. It also makes other API calls to get real calorie information and picture of food not present in database. 
